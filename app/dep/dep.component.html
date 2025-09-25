@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav  class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" routerLink="user-page">User page</a>
+        <a class="nav-link" routerLink="binding">Binding</a>
+        <a class="nav-link" routerLink="api">API</a>
+        <a class="nav-link " (click)="reactiveform()" routerLink="reactive-form">Reactive</a>
+        <a class="nav-link " routerLink="angular">Angular</a>
+        <a class="nav-link " (click)="homee()" routerLink="home">Home</a>
+        <!-- <a class="nav-link " (click)="converter()" routerLink="converter">Converter</a> -->
+        <a class="nav-link " (click)="Department()" routerLink="dep">Department</a>
+
+      </div>
+      <form (click)="onLogout()">
+                <button routerLink="/login"  type="submit">Log out</button>
+            </form>
+    </div>
+  </div>
+</nav>
+    <div class="container">
+    <nav class="sidebar">
+      <!-- <h2>My Site</h2> -->
+      <a (click)="homee()" routerLink="home">Home</a>
+      <a (click)="Department()" routerLink="dep">Department</a>
+    </nav>
+    
+    <div class="content">
+        <div class="grid-container">
+  <h2>Departments</h2>
+<div class="search-bar">
+      <input
+        type="search"
+        id="form1"
+       [(ngModel)]="searchtext"
+        class="search-input"
+        placeholder="Search by Department ID"
+      />
+      <div class="record-count">
+  Total Records: {{ departments.length }}
+</div>
+    </div>
+  <table class="department-table" >
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Department Name</th>
+        <th>Code</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Attachment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dept of departments | filter:searchtext">
+        <td>{{ dept.id }}</td>
+        <td><input
+            type="text"
+            [(ngModel)]="dept.name"
+            class="deptName-input"
+            placeholder="Enter DepName"
+          /></td>
+        <td> <input
+            type="text"
+            [(ngModel)]="dept.code"
+            class="dept-input"
+            placeholder="Enter Code"
+          /></td>
+        <td>
+          <button class="edit-btn" (click)="editDepartment(dept)">✏️</button>
+        </td>
+        <td>
+          <button class="delete-btn" (click)="deleteDepartment(dept.id)">🗑️</button>
+        </td>
+         <td>
+          <button class="attachment-btn">🧷</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+    </div>
+    </div>
+      <!-- <h2> main content</h2> -->
+  <!-- <main style="flex: 1; padding: 20px;">
+    
+    <h1>Hi</h1>
+  </main> -->
+    
+</body>
+</html>

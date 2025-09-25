@@ -1,0 +1,129 @@
+<!-- <p>profile works!</p>
+<ul>
+    <li>{{dummyData.id}}</li>
+    <li>{{dummyData.name}}</li>
+    <li>{{dummyData.email}}</li>
+</ul> -->
+<!-- <div class="meet">
+    <ul *ngFor="let item of user">
+     <li>ID:{{item.employeeId}}</li>
+    <li>Full Name:{{item.fullName}}</li>
+    <li>Emial: {{item.email}}</li>
+    <li>Phone: {{item.phone}}</li>
+    <li>Date of Joining: {{item.dateOfJoining}}</li>
+    <li>Salary: {{item.salary}}</li>
+    </ul>
+</div> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" routerLink="user-page">User page</a>
+          <a class="nav-link" routerLink="binding">Binding</a>
+          <a class="nav-link" routerLink="api">API</a>
+          <a class="nav-link " (click)="reactiveform()" routerLink="reactive-form">Reactive</a>
+          <a class="nav-link " routerLink="angular">Angular</a>
+          <a class="nav-link " (click)="homee()" routerLink="home">Home</a>
+          <!-- <a class="nav-link " (click)="converter()" routerLink="converter">Converter</a> -->
+          <a class="nav-link " (click)="Department()" routerLink="dep">Department</a>
+
+        </div>
+        <form (click)="onLogout()">
+          <button routerLink="/login" type="submit">Log out</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <div class="content" #print>
+    <div class="grid-container">
+      <h2>Users Data</h2>
+      <div class="search-bar">
+        <input type="number" class="search-input" placeholder="Search by User ID" />
+        <button class="search-btn" (click)="searchDepartment()">Search</button>
+        <div class="record-count">
+          Total Records: {{ user.length }}
+        </div>
+      </div>
+      <table class="department-table">
+        <thead>
+          <tr>
+            <th>employeeId</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Date of Jioning</th>
+            <th>Salary</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>Attachment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of user">
+            <td>{{ item.employeeId }}</td>
+            <td>{{item.fullName}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.phone}}</td>
+            <td>{{item.dateOfJoining}}</td>
+            <td>{{item.salary}}</td>
+            <td>
+              <button class="edit-btn" (click)="editDepartment(user)">✏️</button>
+            </td>
+            <td>
+              <button class="delete-btn" (click)="deleteDepartment(user.employeeId)">🗑️</button>
+            </td>
+            <td>
+              <button class="attachment-btn">🧷</button>
+            </td>
+            <td>
+              <button class="attachment-btn" (click)="download()">Download</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="hidden-content" id="printable-a4" #pp>
+    <h2>Data:</h2>
+    <table class="department-table">
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Date of Joining</th>
+          <th>Salary</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of user">
+          <td>{{ item.employeeId }}</td>
+          <td>{{ item.fullName }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.phone }}</td>
+          <td>{{ item.dateOfJoining }}</td>
+          <td>{{ item.salary }}</td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

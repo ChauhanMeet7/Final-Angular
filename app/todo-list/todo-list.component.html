@@ -1,0 +1,11 @@
+<p>todo-list works!</p>
+<h1>Hiii</h1>
+<input type="text" placeholder="Enter your task" [(ngModel)]="task" >
+<button (click)="addTask()">Submit</button>
+@for(task of taskList; track task.id){
+    <ul>
+        <li>Id: {{task.id}}</li>
+        <li>Task: {{task.task}}</li>
+<li><button (click)="Deletee(task.id)">Delete</button></li>
+    </ul>
+}

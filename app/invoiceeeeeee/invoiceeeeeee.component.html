@@ -1,0 +1,94 @@
+<div class="container">
+  <form class="invoice-form" (submit)="addProduct(); $event.preventDefault();">
+    <div>
+      <label>Customer:</label>
+      <select [(ngModel)]="selectedCustomer" name="customer" required>
+        <option [ngValue]="null">-- Select Customer --</option>
+        <option *ngFor="let cust of customers" [ngValue]="cust">{{ cust.name }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Product:</label>
+      <select [(ngModel)]="selectedProduct" name="product">
+        <option [ngValue]="null">-- Select Product --</option>
+        <option *ngFor="let prod of products" [ngValue]="prod">
+          {{ prod.name }} - ₹{{ prod.price }}
+        </option>
+      </select>
+    </div>
+
+    <div>
+      <label>Qty:</label>
+      <input type="number" [(ngModel)]="selectedQuantity" name="qty" min="1" />
+    </div>
+
+    <button type="submit">➕ Add Product</button>
+  </form>
+
+  <div class="tax-form" *ngIf="invoiceItems.length > 0">
+    <label>Invoice Date:</label>
+    <input type="date" [(ngModel)]="invoiceDate" name="date" />
+    <label>Invoice No:</label>
+    <input type="text" [(ngModel)]="invoiceNumber" name="inv" readonly />
+    <label>GST %:</label>
+    <input type="number" [(ngModel)]="gstRate" min="0" />
+    <label>Discount %:</label>
+    <input type="number" [(ngModel)]="discountRate" min="0" />
+  </div>
+
+  <div id="invoice" class="invoice-box" *ngIf="selectedCustomer">
+    <h2>Invoice</h2>
+    <div>
+      <p><strong>Invoice No:</strong> {{ invoiceNumber }}</p>
+      <p><strong>Date:</strong> {{ invoiceDate }}</p>
+    </div>
+    <div>
+      <p class="p"><strong>Customer:</strong> {{ selectedCustomer.name }}</p>
+      <p class="p"><strong>Address:</strong> {{ selectedCustomer.address }}</p>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Amount</th>
+          <th>❌</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of invoiceItems; let i = index">
+          <td>{{ item.name }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.amount }}</td>
+          <td><button (click)="removeItem(i)">❌</button></td>
+        </tr>
+        <tr>
+          <td colspan="3">Subtotal</td>
+          <td colspan="2">₹{{ getSubTotal() }}</td>
+        </tr>
+        <tr>
+          <td colspan="3">Discount ({{ discountRate }}%)</td>
+          <td colspan="2">₹{{ getDiscountAmount() }}</td>
+        </tr>
+        <tr>
+          <td colspan="3">GST ({{ gstRate }}%)</td>
+          <td colspan="2">₹{{ getGSTAmount() }}</td>
+        </tr>
+        <tr>
+          <td colspan="3"><strong>Grand Total</strong></td>
+          <td colspan="2"><strong>₹{{ getFinalTotal() }}</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="buttons" *ngIf="invoiceItems.length > 0">
+    <button (click)="printPage()">🖨️ Print</button>
+    <button (click)="downloadPDF()">📥 Download PDF</button>
+    <button (click)="resetForm()">🔄 Reset</button>
+  </div>
+</div>

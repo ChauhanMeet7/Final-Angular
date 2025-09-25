@@ -1,0 +1,19 @@
+<nav style="background-color: #333; color: white; padding: 10px;">
+  <a 
+    *ngFor="let item of navItems" 
+    [routerLink]="getRouterLink(item)" 
+    routerLinkActive="active"
+    style="margin-right: 15px; color: white; text-decoration: none;"
+  >
+    {{ item }}
+  </a>
+</nav>
+
+  <div style="margin-top: 10px;">
+    <input 
+      type="text" 
+      [(ngModel)]="newItem" 
+      placeholder="Add menu item" 
+    />
+    <button (click)="addNavItem()">Submit</button>
+  </div>

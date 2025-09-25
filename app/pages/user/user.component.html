@@ -1,0 +1,22 @@
+<div>
+<table>
+    <thead>
+        <tr>
+            <th>Sr.no</th>
+            <th>name</th>
+            <th>phone</th>
+            <th>email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (itemm of user; track $index) {
+            <tr>
+                <td>{{$index}}</td>
+                <td>{{itemm.name}}</td>
+                <td>{{itemm.phone}}</td>
+                <td>{{itemm.email}}</td>
+            </tr>
+            }
+    </tbody>
+</table>
+</div>

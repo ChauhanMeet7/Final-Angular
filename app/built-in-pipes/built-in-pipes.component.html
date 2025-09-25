@@ -1,0 +1,141 @@
+<div class="pipes-container">
+  <!-- Header Section -->
+  <div class="header-section">
+    <h1 class="main-title">Angular Built-in Pipes Demo</h1>
+    <p class="subtitle">Explore various Angular pipes with interactive examples</p>
+  </div>
+
+  <!-- Search Section -->
+  <div class="search-section">
+    <div class="search-container">
+      <input type="text" #search placeholder="Search GitHub users..." class="search-input">
+      <div class="search-icon">🔍</div>
+    </div>
+    
+    <!-- User Cards -->
+    <div class="users-grid" *ngIf="users.length > 0">
+      <div class="user-card" *ngFor="let u of users">
+        <img [src]="u.avatar_url" class="user-avatar" [alt]="u.login + ' avatar'">
+        <div class="user-info">
+          <h4 class="username">{{u.login}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Counter Section -->
+  <div class="counter-section">
+    <div class="counter-card">
+      <h3 class="section-title">Counter Demo</h3>
+      <div class="counter-display">
+        <span class="counter-value">{{count}}</span>
+      </div>
+      <div class="counter-buttons">
+        <button #ref (click)="increment()" class="btn btn-primary">+ Increment</button>
+        <button (click)="Decrement()" class="btn btn-secondary">- Decrement</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pipes Demo Section -->
+  <div class="pipes-demo">
+    <h2 class="section-title">String Pipes</h2>
+    <div class="pipes-grid">
+      <div class="pipe-card">
+        <h4 class="pipe-title">Original Text</h4>
+        <p class="pipe-content">{{angular}}</p>
+      </div>
+      
+      <div class="pipe-card">
+        <h4 class="pipe-title">Lowercase Pipe</h4>
+        <p class="pipe-content">{{angular | lowercase}}</p>
+      </div>
+      
+      <div class="pipe-card">
+        <h4 class="pipe-title">Uppercase Pipe</h4>
+        <p class="pipe-content">{{angular | uppercase}}</p>
+      </div>
+      
+      <div class="pipe-card">
+        <h4 class="pipe-title">Title Case Pipe</h4>
+        <p class="pipe-content">{{angular | titlecase}}</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Slice Pipes</h2>
+    <div class="pipes-grid">
+      <div class="pipe-card">
+        <h4 class="pipe-title">Slice (4:8)</h4>
+        <p class="pipe-content">{{angular | slice: 4:8}}</p>
+      </div>
+      
+      <div class="pipe-card">
+        <h4 class="pipe-title">Slice (4)</h4>
+        <p class="pipe-content">{{angular | slice: 4}}</p>
+      </div>
+      
+      <div class="pipe-card">
+        <h4 class="pipe-title">Slice (4:-10)</h4>
+        <p class="pipe-content">{{angular | slice: 4:-10}}</p>
+      </div>
+      
+      <div class="pipe-card">
+        <h4 class="pipe-title">Array Slice (1:3)</h4>
+        <p class="pipe-content">{{[1,2,3,4,5,6] | slice: 1:3}}</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Data Formatting Pipes</h2>
+    <div class="pipes-grid">
+      <div class="pipe-card">
+        <h4 class="pipe-title">JSON Pipe</h4>
+        <pre class="pipe-content json-content">{{userdata | json}}</pre>
+      </div>
+      
+      <div class="pipe-card">
+        <h4 class="pipe-title">Date Pipe</h4>
+        <p class="pipe-content">{{currentDate | date}}</p>
+      </div>
+      
+      <div class="pipe-card">
+        <h4 class="pipe-title">Number Pipe</h4>
+        <p class="pipe-content">{{3.1458922 | number:'1.5'}}</p>
+      </div>
+      
+      <div class="pipe-card">
+        <h4 class="pipe-title">Percent Pipe</h4>
+        <p class="pipe-content">{{0.25 | percent}}</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Currency Pipes</h2>
+    <div class="pipes-grid">
+      <div class="pipe-card">
+        <h4 class="pipe-title">Default Currency</h4>
+        <p class="pipe-content">{{250.20 | currency}}</p>
+      </div>
+      
+      <div class="pipe-card">
+        <h4 class="pipe-title">INR Currency</h4>
+        <p class="pipe-content">{{250.20 | currency:'INR'}}</p>
+      </div>
+      
+      <div class="pipe-card">
+        <h4 class="pipe-title">UK Currency</h4>
+        <p class="pipe-content">{{250.20 | currency:'UK'}}</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Async Pipe</h2>
+    <div class="async-section">
+      <div class="pipe-card">
+        <h4 class="pipe-title">Async Data</h4>
+        <ul class="async-list">
+          @for (item of items | async; track items) {
+            <li class="async-item">{{item}}</li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

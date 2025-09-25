@@ -1,0 +1,59 @@
+<div class="invoice-card" id="invoice-content">
+  <h2>Invoice</h2>
+  <p><strong>Date:</strong> {{ date }}</p>
+<div class="autocomplete-container">
+  <label for="customerInput">Customer Name</label>
+  <input
+    type="text"
+    id="customerInput"
+    [(ngModel)]="customerName"
+    (input)="filterCustomers()"
+    (focus)="showSuggestions = true"
+    (blur)="hideSuggestions()"
+    autocomplete="off"
+  />
+
+  <ul *ngIf="filteredCustomers.length > 0 && showSuggestions" class="suggestion-list">
+    <li
+      *ngFor="let customer of filteredCustomers"
+      (mousedown)="selectCustomer(customer)"
+    >
+      {{ customer }}
+    </li>
+  </ul>
+</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Description</th><th>Qty</th><th>Price</th><th>Total</th><th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items; let i = index">
+        <td>
+            <select>
+            @for (item of Items; track $index){
+                <option>
+                    {{item}}
+                </option>
+            }
+            </select> </td>
+        <td><input type="number" [(ngModel)]="item.quantity" /></td>
+        <td><input type="number" [(ngModel)]="item.price" /></td>
+        <td>{{ item.price * item.quantity | currency }}</td>
+        <td><button (click)="removeItem(i)">Remove</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button (click)="addItem()">Add Item</button>
+
+  <div class="totals">
+    <p>Subtotal: {{ subtotal | currency }}</p>
+    <p>Tax ({{ taxRate }}%): {{ tax | currency }}</p>
+    <p><strong>Total: {{ total | currency }}</strong></p>
+  </div>
+</div>
+
+<button (click)="downloadPDF()">Download PDF</button>
+

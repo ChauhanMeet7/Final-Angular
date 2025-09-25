@@ -1,0 +1,42 @@
+ <div class="container mt-5">
+    <div class="row">
+      <!-- Employee Table Section -->
+      <div class="col-7">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            Employee List
+          </div>
+            <button class="btn btn-sm btn-warning" (click)="navigate()" >Add Employee</button>
+                        <button class="btn btn-sm btn-warning" (click)="navigate()" >Api</button>
+
+          <div class="card-body">
+            <table class="table table-bordered table-hover">
+              <thead class="table-light">
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                   <th>Phone</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="employeeTableBody">
+                <!-- Dynamic rows will go here -->
+                 @for (item of employeeList; track $index) {
+                <tr>
+                  <td>{{$index +1}}</td>
+                  <td>{{item.name}}</td>
+                  <td>{{item.email}}</td>
+                  <td>{{item.phone}}</td>
+                  <td>
+                    <button class="btn btn-sm btn-warning" >Edit</button>
+                    <button class="btn btn-sm btn-danger" >Delete</button>
+                  </td>
+                </tr>
+        }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+<router-outlet> </router-outlet>

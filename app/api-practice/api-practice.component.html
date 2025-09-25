@@ -1,0 +1,54 @@
+<div class="col-12">
+    <h1>Form</h1>
+    <form>
+        --{{newPost.id}}
+        <label><span>UserId: </span></label>
+        <input name="userId" [(ngModel)]="newPost.userId" placeholder="Id">
+        <hr>
+        <label><span>Id: </span></label>
+        <input name="id" [(ngModel)]="newPost.id" placeholder="Id">
+        <hr>
+        <label><span>Title: </span></label>
+        <input name="title" [(ngModel)]="newPost.title" placeholder="Tilte">
+        <hr>
+        <label><span>Body: </span></label>
+        <input name="body" [(ngModel)]="newPost.body" placeholder="Body">
+        <br>
+        <br>
+
+        @if (newPost.id==0) {
+
+        <button (click)="onSave()">Save</button>
+        }@else {
+
+        <button (click)="onUpdate()">update</button>
+        }
+    </form>
+</div>
+<br>
+
+<div class="row-8">
+    <table>
+        <thead>
+            <tr>
+                <th>Id </th>
+                <th>title </th>
+                <th>body </th>
+                <th>Action </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of post; track $index) {
+            <tr>
+                <td>{{$index +1}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.body}}</td>
+                <td>
+                    <button (click)="onEdit(item)">Edit</button>
+                    <button (click)="onDelete(item.userId)">Delete</button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

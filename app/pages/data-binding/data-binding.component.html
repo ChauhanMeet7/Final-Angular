@@ -1,0 +1,70 @@
+<p>data-binding works!</p>
+<h1> meet chauhan</h1>
+<div class="row">
+    <div class="col-3">
+        Course Name:{{CourseName}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        Course Duration:{{CourseDuration}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+<input type="text" [value]="CourseName"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        Status:{{isActive}}
+        <input type="checkbox" [checked]="isActive"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3" >
+<input type="text" [(ngModel)]="CourseName"/>
+    </div>
+</div>
+<br>
+<br>
+<div class="btn btn-success">
+    <button (click)="showAlert()">Show Alert</button>
+</div>
+<div class="btn btn-success">
+    <button class="btn btn-success" (click)="changeName('React')">Set react</button>
+    <button class="btn btn-success" (click)="changeName('Dot net')">Set dot net</button>
+
+</div>
+<br>
+<br>
+<div class="row">
+    <select [(ngModel)]="slectedCity" (change)="CityChange()">
+        <option value="Mumbai">Mumbai</option>
+        <option value="Gujarat">Gujarat</option>
+        <option value="Chennai">Chennai</option>
+        <option value="Other">Other</option>
+    </select>
+</div>
+<div>
+    City : {{slectedCity}}
+</div>
+<div class="btn btn-success">
+    <button class="btn btn-success" (click)="Show()">Show</button>
+    <button class="btn btn-success" (click)="Hide()">Hide</button>
+
+</div>
+<div class="row">
+    <div class="col-3">
+        @if(isVisible==true){
+            <input type="text" [(ngModel)]="Message" [value]="Message" />
+            Message! ={{Message}}
+        }
+        @else{
+            <p>TextBox is hidden</p>            
+        }
+    </div>
+</div>
+<div class="col-2">
+Message! ={{Message}}
+</div>

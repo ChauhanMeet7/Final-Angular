@@ -1,0 +1,131 @@
+ <div class="container mt-5">
+    <div class="row">
+      <!-- Employee Table Section -->
+      <div class="col-7">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            Employee List
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered table-hover">
+              <thead class="table-light">
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="employeeTableBody">
+                <!-- Dynamic rows will go here -->
+                 @for (item of userList; track $index) {
+                <tr>
+                  <td>{{$index +1}}</td>
+                  <td>{{item.fullName}}</td>
+                  <td>{{item.email}}</td>
+                  <td>
+                    <button class="btn btn-sm btn-warning" >Edit</button>
+                    <button class="btn btn-sm btn-danger" >Delete</button>
+                  </td>
+                </tr>
+            }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Employee Form Section -->
+      <div class="col-5">
+        <div class="card">
+          <div class="card-header bg-success text-white">
+            Add / Edit Employee
+          </div>
+          <div class="card-body">
+            <form id="employeeForm" [formGroup]="employeForm" (ngSubmit)="save()">
+              <div class="mb-3">
+                <label for="fullName" class="form-label">Full Name</label>
+                <input type="text" formControlName="fullName" class="form-control" name="fullName" id="fullName" required />
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" formControlName="email" class="form-control" name="email" id="email" required />
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="text" formControlName="phone" class="form-control" name="phone" id="phone" />
+              </div>
+
+              <div class="mb-3">
+                <label for="gender" class="form-label">Gender</label>
+                <select class="form-select" formControlName="gender" name="gender" id="gender">
+                  <option value="">Select</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="dateOfJoining" class="form-label">Date of Joining</label>
+                <input type="date" formControlName="dateOfJoining" class="form-control" name="dateOfJoining" id="dateOfJoining" />
+              </div>
+
+              <div class="mb-3">
+                <label for="employeeType" class="form-label">Employee Type</label>
+                <input type="text" formControlName="employeeType" class="form-control" name="employeeType" id="employeeType" />
+              </div>
+
+              <div class="mb-3">
+                <label for="salary" class="form-label">Salary</label>
+                <input type="number" formControlName="salary" class="form-control" name="salary" id="salary" />
+              </div>
+
+              <div class="mb-3">
+                <label for="departmentId" class="form-label">Department Id</label>
+                <input type="text" formControlName="departmentId" class="form-control" name="departmentId" id="departmentName" />
+              </div>
+
+              <div class="mb-3">
+                <label for="designationId" class="form-label">Designation Id</label>
+                <input type="text" formControlName="designationId" class="form-control" name="departmentId" id="designationName" />
+              </div>
+
+              <button type="submit"  class="btn btn-success w-100"  (click)="save()" >Save Employee</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- <div class="row">
+<div class="col-6">
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Sr No</th>
+<th>Name</th>
+<th>Email</th>
+<th>Phone</th>
+</tr>
+</thead>
+<tbody>
+        @for (item of userList; track $index) {
+<tr>
+<td>{{$index +1}}</td>
+<td>{{item.name}}</td>
+<td>{{item.email}}</td>
+<td>{{item.phone}}</td>
+</tr>
+}
+</tbody>
+</table>
+</div>
+</div> -->
+<button (click)="Getuser()">getUser</button>
+<select>
+  @for (item of user;track $index){
+    <option>{{item.name}}</option>
+  }
+</select>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <nav  class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <!-- <a class="nav-link active" aria-current="page" routerLink="user-page">User page</a>
+        <a class="nav-link" routerLink="binding">Binding</a>
+        <a class="nav-link" routerLink="api">API</a>
+        <a class="nav-link " routerLink="reactive-form">Reactive</a>
+        <a class="nav-link " routerLink="angular">Angular</a> -->
+        <a class="nav-link " (click)="home()" routerLink="home">Home</a>
+        <a class="nav-link " (click)="converter()" routerLink="converter">Converter</a>
+
+      </div>
+      <form (click)="onLogout()">
+                <button routerLink="/login"  type="submit">Log out</button>
+            </form>
+    </div>
+  </div>
+</nav>
+<div class="container">
+    <nav class="sidebar">
+      <!-- <h2>My Site</h2> -->
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+    </nav>
+   
+    <div class="content">
+      <!-- <h2> main content</h2> -->
+   <div class="container11">
+        <h1>Oracle to MS SQL Server Data Transfer</h1>
+        <div class="database-section">
+            <div class="db-form">
+                <h2>Oracle Database</h2>
+                <div class="form-group">
+                    <label for="oracle-host">Host</label>
+                    <input type="text" id="oracle-host" placeholder="Enter Oracle host">
+                </div>
+                <div class="form-group">
+                    <label for="oracle-port">Port</label>
+                    <input type="text" id="oracle-port" placeholder="1521">
+                </div>
+                <div class="form-group">
+                    <label for="oracle-sid">SID</label>
+                    <input type="text" id="oracle-sid" placeholder="Enter SID">
+                </div>
+                <div class="form-group">
+                    <label for="oracle-username">Username</label>
+                    <input type="text" id="oracle-username" placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label for="oracle-password">Password</label>
+                    <input type="password" id="oracle-password" placeholder="Enter password">
+                </div>
+            </div>
+            <div class="db-form">
+                <h2>MS SQL Server</h2>
+                <div class="form-group">
+                    <label for="sqlserver-host">Host</label>
+                    <input type="text" id="sqlserver-host" placeholder="Enter SQL Server host">
+                </div>
+                <div class="form-group">
+                    <label for="sqlserver-port">Port</label>
+                    <input type="text" id="sqlserver-port" placeholder="1433">
+                </div>
+                <div class="form-group">
+                    <label for="sqlserver-db">Database</label>
+                    <input type="text" id="sqlserver-db" placeholder="Enter database name">
+                </div>
+                <div class="form-group">
+                    <label for="sqlserver-username">Username</label>
+                    <input type="text" id="sqlserver-username" placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label for="sqlserver-password">Password</label>
+                    <input type="password" id="sqlserver-password" placeholder="Enter password">
+                </div>
+            </div>
+        </div>
+        <div class="transfer-section">
+            <button class="transfer-btn">Start Transfer</button>
+        </div>
+        <div class="progress-section">
+            <h2>Transfer Progress</h2>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="progress-text">0% Complete</div>
+        </div>
+    </div>
+    </div>
+  </div> 
+</body>
+</html>
